@@ -272,16 +272,199 @@
             display: none;
             z-index: 1002;
         }
+
+        /* 顶部导航 Menu 样式 */
+        .nav-container {
+            width: 100%;
+            max-width: 1200px;
+            background: rgba(17, 24, 39, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            border-radius: 16px;
+            padding: 18px 22px;
+            margin-bottom: 35px;
+            position: sticky;
+            top: 12px;
+            z-index: 900;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .menu-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .menu-row + .menu-row {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .menu-label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #94A3B8;
+            margin-right: 6px;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .menu-label.highlight {
+            color: #FBBF24;
+        }
+
+        .menu-btn {
+            background: rgba(255, 255, 255, 0.06);
+            color: #E2E8F0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 7px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .menu-btn:hover {
+            background: rgba(56, 189, 248, 0.15);
+            border-color: var(--accent);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .menu-btn.active {
+            background: var(--accent);
+            color: #020617;
+            border-color: var(--accent);
+            font-weight: 700;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+        }
+
+        .menu-btn.folder-btn {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.18), rgba(56, 189, 248, 0.15));
+            border-color: rgba(251, 191, 36, 0.45);
+            color: #FDE68A;
+            padding: 8px 16px;
+            font-size: 0.92rem;
+        }
+
+        .menu-btn.folder-btn:hover {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.35), rgba(56, 189, 248, 0.3));
+            border-color: #FBBF24;
+            color: #fff;
+        }
+
+        .menu-btn.folder-btn.active {
+            background: linear-gradient(135deg, #F59E0B, #38BDF8);
+            color: #020617;
+            border-color: #FBBF24;
+            box-shadow: 0 0 18px rgba(245, 158, 11, 0.5);
+        }
+
+        .menu-count {
+            background: rgba(0, 0, 0, 0.35);
+            padding: 2px 7px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            color: inherit;
+        }
+
+        .folder-badge {
+            font-size: 0.78rem;
+            padding: 4px 10px;
+            border-radius: 12px;
+            background: rgba(245, 158, 11, 0.15);
+            border: 1px solid rgba(245, 158, 11, 0.35);
+            color: #FBBF24;
+            font-weight: 600;
+        }
+
+        .series-jump-btn {
+            margin-top: 10px;
+            padding: 6px 12px;
+            border-radius: 8px;
+            background: rgba(245, 158, 11, 0.18);
+            border: 1px solid rgba(245, 158, 11, 0.4);
+            color: #FDE68A;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .series-jump-btn:hover {
+            background: #F59E0B;
+            color: #020617;
+        }
+
+        /* 播放器内选集播放列表栏 */
+        #modal-playlist-bar {
+            background: #0F172A;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 12px 20px;
+            display: none;
+            align-items: center;
+            gap: 10px;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .playlist-title {
+            color: #FBBF24;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-right: 8px;
+            flex-shrink: 0;
+        }
+
+        .playlist-item {
+            background: rgba(255, 255, 255, 0.07);
+            color: #CBD5E1;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .playlist-item:hover {
+            border-color: var(--accent);
+            color: #fff;
+        }
+
+        .playlist-item.active {
+            background: var(--accent);
+            color: #020617;
+            border-color: var(--accent);
+            font-weight: 700;
+        }
     </style>
 </head>
 
 <body>
-    <header>
+    <header style="margin-bottom: 30px;">
         <h1>老蔡建立的科普影视中心</h1>
         <p class="subtitle">EXPLORE THE UNIVERSE THROUGH ADVANCED VISUALS</p>
     </header>
 
-    <div id="gallery-content">
+    <!-- 顶部系列子文件夹与分类导航 Menu -->
+    <nav class="nav-container" id="category-menu">
+        <!-- Menu items will be injected by JavaScript -->
+    </nav>
+
+    <div id="gallery-content" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
         <!-- Content will be injected by JavaScript -->
     </div>
 
@@ -291,6 +474,7 @@
             <span class="close-modal">&times;</span>
             <div class="loading-spinner">正在加载云端视频...</div>
             <div id="video-player-container"></div>
+            <div id="modal-playlist-bar"></div>
         </div>
     </div>
 
@@ -998,18 +1182,132 @@
             }
         ];
 
+        let activeSection = 'ALL';
+
+        // 判断某个栏目是否属于 videos/<子文件夹>/ 系列
+        function getSubfolderName(sectionObj) {
+            for (const v of sectionObj.videos) {
+                if (v.type === 'local' && v.source && v.source.startsWith('videos/')) {
+                    const parts = v.source.split('/');
+                    if (parts.length >= 3) {
+                        return parts[1]; // 返回子文件夹名称，如 "岳阳楼记系列"
+                    }
+                }
+            }
+            return null;
+        }
+
+        // 关联单集白板视频与对应的子文件夹系列栏目
+        const relatedSeriesMap = {
+            "videos/岳阳楼记-whiteboard.mp4": { section: "岳阳楼记系列", count: 10 },
+            "videos/滕王阁序-whiteboard.mp4": { section: "滕王阁序系列", count: 8 },
+            "videos/洛神赋-whiteboard.mp4": { section: "洛神赋系列", count: 5 }
+        };
+
+        // 渲染顶部导航菜单 Menu
+        function renderMenu() {
+            const menuContainer = document.getElementById('category-menu');
+            const totalVideos = videoData.reduce((acc, s) => acc + s.videos.length, 0);
+
+            const folderSections = videoData.filter(s => getSubfolderName(s) !== null);
+            const regularSections = videoData.filter(s => getSubfolderName(s) === null);
+
+            let html = '';
+
+            // 第一行：子文件夹系列专栏 Menu (videos/<子文件夹>/)
+            if (folderSections.length > 0) {
+                html += `<div class="menu-row">`;
+                html += `<span class="menu-label highlight">📂 系列文件夹专栏 Menu：</span>`;
+                folderSections.forEach(sec => {
+                    const isAct = activeSection === sec.section ? 'active' : '';
+                    const folderName = getSubfolderName(sec);
+                    html += `
+                        <button class="menu-btn folder-btn ${isAct}" onclick="selectSection('${sec.section}')" title="查看 videos/${folderName}/ 下的全部 ${sec.videos.length} 部视频">
+                            📂 ${sec.section}
+                            <span class="menu-count">${sec.videos.length}集</span>
+                        </button>
+                    `;
+                });
+                html += `</div>`;
+            }
+
+            // 第二行：全部视频与常规栏目 Menu
+            html += `<div class="menu-row">`;
+            html += `<span class="menu-label">📑 栏目分类 Menu：</span>`;
+            html += `
+                <button class="menu-btn ${activeSection === 'ALL' ? 'active' : ''}" onclick="selectSection('ALL')">
+                    🌟 全部视频
+                    <span class="menu-count">${totalVideos}</span>
+                </button>
+            `;
+            regularSections.forEach(sec => {
+                const isAct = activeSection === sec.section ? 'active' : '';
+                html += `
+                    <button class="menu-btn ${isAct}" onclick="selectSection('${sec.section}')">
+                        ${sec.section}
+                        <span class="menu-count">${sec.videos.length}</span>
+                    </button>
+                `;
+            });
+            html += `</div>`;
+
+            menuContainer.innerHTML = html;
+        }
+
+        // 切换分类/系列 Menu
+        function selectSection(sectionName) {
+            activeSection = sectionName;
+            renderMenu();
+            renderGallery();
+            const galleryEl = document.getElementById('gallery-content');
+            if (sectionName !== 'ALL' && galleryEl) {
+                window.scrollTo({ top: galleryEl.offsetTop - 130, behavior: 'smooth' });
+            }
+        }
+
         // 渲染画廊
         function renderGallery() {
             const container = document.getElementById('gallery-content');
             let html = '';
 
-            videoData.forEach(section => {
-                html += `<div class="section-title">${section.section}</div>`;
+            // 在「全部视频」模式下，将子文件夹系列置顶优先展示，方便一眼看到新增系列
+            let sectionsToRender = [];
+            if (activeSection === 'ALL') {
+                const folderSecs = videoData.filter(s => getSubfolderName(s) !== null);
+                const otherSecs = videoData.filter(s => getSubfolderName(s) === null);
+                sectionsToRender = [...folderSecs, ...otherSecs];
+            } else {
+                sectionsToRender = videoData.filter(s => s.section === activeSection);
+            }
+
+            sectionsToRender.forEach(section => {
+                const folderName = getSubfolderName(section);
+                const folderBadgeHtml = folderName
+                    ? `<span class="folder-badge">📁 子目录：videos/${folderName}/ （共 ${section.videos.length} 部视频）</span>`
+                    : `<span style="font-size: 0.85rem; color: #94A3B8; font-weight: 400;">共 ${section.videos.length} 部视频</span>`;
+
+                const backAllBtn = activeSection !== 'ALL'
+                    ? `<button class="menu-btn" style="margin-left:auto; font-size:0.8rem;" onclick="selectSection('ALL')">← 返回全部视频</button>`
+                    : '';
+
+                html += `<div class="section-title"><span>${folderName ? '📂 ' : ''}${section.section}</span> ${folderBadgeHtml} ${backAllBtn}</div>`;
                 html += `<div class="video-grid">`;
 
-                section.videos.forEach(video => {
+                section.videos.forEach((video, idx) => {
+                    const related = relatedSeriesMap[video.source];
+                    const relatedBtnHtml = related
+                        ? `<div style="margin-top: 10px;">
+                               <span class="series-jump-btn" onclick="event.stopPropagation(); selectSection('${related.section}')">
+                                   📂 进入「${related.section}」专栏（共 ${related.count} 集） →
+                               </span>
+                           </div>`
+                        : '';
+
+                    const safeTitle = video.title.replace(/'/g, "\\'");
+                    const safeSec = section.section.replace(/'/g, "\\'");
+
                     html += `
-                        <div class="video-card" onclick="playVideo('${video.type}', '${video.source}')">
+                        <div class="video-card" onclick="playVideo('${video.type}', '${video.source}', '${safeSec}')">
                             <div class="thumbnail-container">
                                 <img src="${video.thumb}" alt="${video.title}">
                                 <div class="play-overlay"><div class="play-icon">▶</div></div>
@@ -1020,8 +1318,9 @@
                                 <div class="description">${video.desc}</div>
                                 <div class="status-bar">
                                     <div class="dot"></div>
-                                    ${video.type === 'gdrive' ? 'Cloud Stream 就绪' : '本地资源'}
+                                    ${video.type === 'gdrive' ? 'Cloud Stream 就绪' : (folderName ? `📂 ${folderName} · 第 ${idx + 1} 集` : '本地资源')}
                                 </div>
+                                ${relatedBtnHtml}
                             </div>
                         </div>
                     `;
@@ -1033,10 +1332,11 @@
             container.innerHTML = html;
         }
 
-        // 播放视频逻辑
-        function playVideo(type, source) {
+        // 播放视频逻辑（支持同系列剧集列表切换）
+        function playVideo(type, source, sectionName) {
             const modal = document.getElementById('videoModal');
             const playerContainer = document.getElementById('video-player-container');
+            const playlistBar = document.getElementById('modal-playlist-bar');
             const spinner = document.querySelector('.loading-spinner');
 
             playerContainer.innerHTML = '';
@@ -1049,29 +1349,51 @@
                     return;
                 }
                 spinner.style.display = 'block';
-                // 使用 Google Drive Preview 模式
                 const embedUrl = `https://drive.google.com/file/d/${source}/preview`;
                 playerContainer.innerHTML = `<iframe src="${embedUrl}" allow="autoplay" allowfullscreen></iframe>`;
-
-                // 隐藏加载提示（当 iframe 加载时）
                 playerContainer.querySelector('iframe').onload = () => {
                     spinner.style.display = 'none';
                 };
             } else if (type === 'local') {
-                // 使用 HTML5 原生播放器播放本地/GitHub Pages托管的视频
                 spinner.style.display = 'none';
-                playerContainer.innerHTML = `<video src="${source}" controls autoplay style="width: 100%; height: 100%; object-fit: contain;"></video>`;
+                const encodedSrc = encodeURI(source);
+                playerContainer.innerHTML = `<video src="${encodedSrc}" controls autoplay style="width: 100%; height: 100%; object-fit: contain;"></video>`;
             } else {
-                // 其它链接
                 window.open(source, '_blank');
                 modal.style.display = 'none';
+                return;
+            }
+
+            // 渲染播放器底部的同系列选集菜单
+            const secObj = videoData.find(s => s.section === sectionName);
+            if (secObj && secObj.videos.length > 1) {
+                playlistBar.style.display = 'flex';
+                let plHtml = `<span class="playlist-title">📺 ${secObj.section} 选集 (${secObj.videos.length})：</span>`;
+                secObj.videos.forEach((v, i) => {
+                    const isCurrent = v.source === source ? 'active' : '';
+                    const safeSec = secObj.section.replace(/'/g, "\\'");
+                    plHtml += `
+                        <button class="playlist-item ${isCurrent}" onclick="playVideo('${v.type}', '${v.source}', '${safeSec}')">
+                            ${i + 1}. ${v.title}
+                        </button>
+                    `;
+                });
+                playlistBar.innerHTML = plHtml;
+            } else {
+                playlistBar.style.display = 'none';
+                playlistBar.innerHTML = '';
             }
         }
 
         function closeModal() {
             const modal = document.getElementById('videoModal');
             const playerContainer = document.getElementById('video-player-container');
+            const playlistBar = document.getElementById('modal-playlist-bar');
             playerContainer.innerHTML = ''; // 停止播放
+            if (playlistBar) {
+                playlistBar.style.display = 'none';
+                playlistBar.innerHTML = '';
+            }
             modal.style.display = 'none';
         }
 
@@ -1084,6 +1406,7 @@
         };
 
         // 初始化
+        renderMenu();
         renderGallery();
     </script>
 </body>
